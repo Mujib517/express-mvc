@@ -1,0 +1,9 @@
+module.exports = {
+    get: function (req, res) {
+        let blogs = [
+            { "_id": "597800e668f3662f785f55a3", "title": "My New Blog", "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum", "published": true, "__v": 0, "views": 2, "lastUpdated": "2017-07-26T02:39:34.253Z" },
+            { "_id": "59794b652da56c166807189a", "title": "My Second Blog", "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum", "published": true, "__v": 0, "views": 0, "lastUpdated": "2017-07-27T02:09:41.191Z" }];
+
+        res.render('pages/blogs', { blogs: blogs });
+    }
+}

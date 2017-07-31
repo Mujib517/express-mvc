@@ -1,0 +1,12 @@
+<div class="col-md-10">
+    {{#each blogs}}
+    <div class="well">
+        <h3>{{title}}</h3>
+        {{#if views}}
+        <div>Views: {{views}}</div>
+        {{/if}}
+        <p>{{content}}</p>
+        <div class="pull-right">{{lastUpdated}}</div>
+    </div>
+    {{/each}}
+</div>
