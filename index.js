@@ -1,5 +1,6 @@
 const express = require('express');
 const hbs = require('express-hbs');
+const mongoose = require('mongoose');
 
 let defaultRouter = require('./routers/defaultRouter');
 let blogRouter = require('./routers/blogRouter');
@@ -12,6 +13,8 @@ let port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+mongoose.connect("mongodb://localhost/blogsDb", { useMongoClient: true });
 
 app.use(express.static(__dirname + "/lib"));
 

@@ -1,12 +1,26 @@
 <div class="col-md-10">
-    {{#each blogs}}
-    <div class="well">
-        <h3>{{title}}</h3>
-        {{#if views}}
-        <div>Views: {{views}}</div>
-        {{/if}}
-        <p>{{content}}</p>
-        <div class="pull-right">{{lastUpdated}}</div>
+    <div class="col-md-1 pull-left">
+        <a href="blogs/new" class="btn btn-success">
+            Add New Blog Post
+        </a>
+    </div>
+    <div class="col-md-2 pull-right">
+        <a href="/blogs/0/5" class="btn btn-primary">Prev</a>
+        <a href="/blogs/1/5" class="btn btn-primary">Next</a>
+    </div>
+    <br/><br/> {{#each blogs}}
+    <div class="row">
+        <div class="well">
+            <a href="blogs/{{_id}}">
+                <h4>{{_id}}</h4>
+                <h3>{{title}}</h3>
+                {{#if views}}
+                <div>Views: {{views}}</div>
+                {{/if}}
+                <p>{{content}}</p>
+                <div class="pull-right">{{lastUpdated}}</div>
+            </a>
+        </div>
     </div>
     {{/each}}
 </div>

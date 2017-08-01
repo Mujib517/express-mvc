@@ -1,0 +1,19 @@
+<div class="col-md-10">
+    <h1>{{title}}</h1>
+    <div>{{content}}</div>
+    <div class="pull-right">Views: {{views}}</div>
+    <div class="pull-right">{{lastUpdated}}</div>
+
+    
+    <h3>Comments</h3>
+    <hr>
+    {{#each comments}}
+    <div class="row">
+        <div>
+            {{name}}
+        </div>
+        <div>{{subject}}</div>
+        <div>{{message}}</div>
+    </div>
+    <hr/> {{/each}}
+</div>
