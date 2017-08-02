@@ -1,9 +1,11 @@
 const express = require('express');
 const hbs = require('express-hbs');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 let defaultRouter = require('./routers/defaultRouter');
 let blogRouter = require('./routers/blogRouter');
+let commentRouter = require('./routers/commentRouter');
 
 let app = express();
 
@@ -16,6 +18,7 @@ app.listen(port, () => {
 
 mongoose.connect("mongodb://localhost/blogsDb", { useMongoClient: true });
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/lib"));
 
 app.set('view engine', 'hbs');
@@ -28,3 +31,4 @@ app.engine('hbs', hbs.express4({
 
 app.use('/', defaultRouter);
 app.use('/blogs', blogRouter);
+app.use('/blogs/comments', commentRouter);

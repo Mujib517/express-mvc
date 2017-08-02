@@ -4,15 +4,41 @@
     <div class="pull-right">Views: {{views}}</div>
     <div class="pull-right">{{lastUpdated}}</div>
 
-    
+    <hr/> {{#if comments}}
     <h3>Comments</h3>
-    <hr>
-    {{#each comments}}
+    {{else }}
+    <h3>Be the first one to comment</h3>
+    {{/if}}
     <div class="row">
-        <div>
+        <form action="comments" method="POST">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" placeholder="Enter your name" required />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="subject" placeholder="Enter your subject"  required/>
+                </div>
+                <div class="form-group">
+                    <textarea rows="10" type="text" class="form-control" name="message" placeholder="Enter your comment" required></textarea>
+                </div>
+                <div class="form-group hidden">
+                    <input type="text" class="form-control" name="blogId" placeholder="Enter your subject" value="{{_id}}" />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-danger">Post my comment</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <hr> {{#each comments}}
+    <div class="row">
+        <h4>
             {{name}}
-        </div>
-        <div>{{subject}}</div>
+        </h4>
+        <h4><em>{{subject}}</em></h4>
         <div>{{message}}</div>
     </div>
     <hr/> {{/each}}

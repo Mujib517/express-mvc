@@ -4,10 +4,11 @@ let blogRouter = express.Router();
 
 let blogCtrl = require('../controllers/blogCtrl');
 
-blogRouter.get('/',blogCtrl.get);
-blogRouter.get('/new',blogCtrl.new);
-blogRouter.get('/:id',blogCtrl.getById);
-blogRouter.get('/:pageIndex/:pageSize',blogCtrl.get);
+blogRouter.get('/', blogCtrl.get);
+blogRouter.get('/new', blogCtrl.new);
+blogRouter.get('/:id', blogCtrl.getById);
+blogRouter.get('/:pageIndex/:pageSize', blogCtrl.get);
+blogRouter.post('/blogs', blogCtrl.save);
 
 
 module.exports = blogRouter;
