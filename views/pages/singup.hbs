@@ -1,0 +1,24 @@
+<div class="col-md-5">
+    <h3>Sign up</h3>
+
+    <div>
+        {{#if success}}
+        <div class="alert alert-success">Registeration successful</div>
+        {{/if}} 
+        
+        {{#if failed}}
+        <div class="alert alert-success">Registration failed</div>
+        {{/if}}
+    </div>
+    <form action="/users/register" method="POST">
+        <div class="form-group">
+            <input name="email" type="email" class="form-control" placeholder="Email" required />
+        </div>
+        <div class="form-group">
+            <input name="password" type="password" class="form-control" placeholder="Password" required/>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-info">Sign up</button>
+        </div>
+    </form>
+</div>

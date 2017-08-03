@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 let defaultRouter = require('./routers/defaultRouter');
 let blogRouter = require('./routers/blogRouter');
 let commentRouter = require('./routers/commentRouter');
+let userRouter = require('./routers/userRouter');
 
 let app = express();
 
@@ -31,4 +32,5 @@ app.engine('hbs', hbs.express4({
 
 app.use('/', defaultRouter);
 app.use('/blogs', blogRouter);
+app.use('/users', userRouter);
 app.use('/blogs/comments', commentRouter);
