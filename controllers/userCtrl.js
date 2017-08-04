@@ -1,15 +1,12 @@
 let User = require('./../models/userModel');
 
+
 let userCtrl = function () {
 
-    let login = function (req, res) {
-        let email = req.body.email;
-        let password = req.body.password;
-
-        //select username from User where username=name and password=pwd
+    let login = function (email, password, done) {
         User.findOne({ email: email, password: password }, function (err, user) {
-            if (!user) res.redirect("/failed");
-            else res.redirect("/success");
+            if (!user) done("Wrong username or password");
+            else done(null, user);
         });
     };
 
@@ -40,11 +37,17 @@ let userCtrl = function () {
         res.render("pages/singin");
     };
 
+    let logout = function (req, res) {
+        req.logout();
+        res.redirect('/users/login');
+    };
+
     return {
         login: login,
         register: register,
         singup: signup,
-        signin: signin
+        signin: signin,
+        logout: logout
     }
 };
 

@@ -8,6 +8,9 @@ let blogRouter = require('./routers/blogRouter');
 let commentRouter = require('./routers/commentRouter');
 let userRouter = require('./routers/userRouter');
 
+let configureAuth = require('./utilities/auth');
+let middlewares = require('./utilities/middlewares');
+
 let app = express();
 
 let port = process.env.PORT || 3000;
@@ -16,6 +19,8 @@ let port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+configureAuth(app);
 
 mongoose.connect("mongodb://localhost/blogsDb", { useMongoClient: true });
 
@@ -31,6 +36,9 @@ app.engine('hbs', hbs.express4({
 }));
 
 app.use('/', defaultRouter);
-app.use('/blogs', blogRouter);
 app.use('/users', userRouter);
+
+app.use(middlewares.isAuthenticated);
+app.use(middlewares.noCache);
+app.use('/blogs', blogRouter);
 app.use('/blogs/comments', commentRouter);
