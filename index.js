@@ -22,7 +22,10 @@ app.listen(port, () => {
 
 configureAuth(app);
 
-mongoose.connect("mongodb://localhost/blogsDb", { useMongoClient: true });
+// mongoose.connect("mongodb://localhost/blogsDb", { useMongoClient: true });
+
+mongoose.connect("mongodb://admin:admin@ds125053.mlab.com:25053/blgsdb", { useMongoClient: true });
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/lib"));
@@ -40,5 +43,13 @@ app.use('/users', userRouter);
 
 app.use(middlewares.isAuthenticated);
 app.use(middlewares.noCache);
+
+app.use(function (req, res, next) {
+    res.locals.isLoggedin = true;
+    next();
+});
+
+
+
 app.use('/blogs', blogRouter);
 app.use('/blogs/comments', commentRouter);
